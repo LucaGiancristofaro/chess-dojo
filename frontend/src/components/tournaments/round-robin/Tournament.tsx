@@ -7,7 +7,7 @@ import {
     RoundRobin,
     RoundRobinPlayerStatuses,
 } from '@jackstenglein/chess-dojo-common/src/roundRobin/api';
-import { PeopleAlt, TableChart, Timeline } from '@mui/icons-material';
+import { CalendarMonth, PeopleAlt, TableChart, Timeline as TimelineIcon } from '@mui/icons-material';
 import { TabContext, TabPanel } from '@mui/lab';
 import {
     Button,
@@ -26,6 +26,7 @@ import { Games } from './Games';
 import { Pairings } from './Pairings';
 import { Players } from './Players';
 import { Stats } from './Stats';
+import { Activity } from './Activity';
 import SubmitGameModal from './SubmitGameModal';
 import { WithdrawModal } from './WithdrawModal';
 
@@ -51,7 +52,7 @@ export function Tournament({
             <CardContent>
                 {user &&
                     tournament.players[user.username]?.status ===
-                        RoundRobinPlayerStatuses.ACTIVE && (
+                    RoundRobinPlayerStatuses.ACTIVE && (
                         <Stack sx={{ mt: -2, mb: 3 }} gap={2}>
                             <Stack direction='row' gap={1}>
                                 <Button
@@ -98,7 +99,8 @@ export function Tournament({
                             icon={<GiCrossedSwords size={24} />}
                         />
                         <Tab label='Games' value='games' icon={<PawnIcon />} />
-                        <Tab label='Stats' value='stats' icon={<Timeline />} />
+                        <Tab label='Activity' value='activity' icon={<CalendarMonth />} />
+                        <Tab label='Stats' value='stats' icon={<TimelineIcon />} />
                     </Tabs>
 
                     <TabPanel value='players' sx={{ px: 0 }}>
@@ -115,6 +117,10 @@ export function Tournament({
 
                     <TabPanel value='games' sx={{ px: 0 }}>
                         <Games tournament={tournament} />
+                    </TabPanel>
+
+                    <TabPanel value='activity' sx={{ px: 0 }}>
+                        <Activity tournament={tournament} />
                     </TabPanel>
 
                     <TabPanel value='stats' sx={{ px: 0 }}>
