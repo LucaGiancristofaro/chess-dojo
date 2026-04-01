@@ -7,7 +7,12 @@ import {
     RoundRobin,
     RoundRobinPlayerStatuses,
 } from '@jackstenglein/chess-dojo-common/src/roundRobin/api';
-import { CalendarMonth, PeopleAlt, TableChart, Timeline as TimelineIcon } from '@mui/icons-material';
+import {
+    CalendarMonth,
+    PeopleAlt,
+    TableChart,
+    Timeline as TimelineIcon,
+} from '@mui/icons-material';
 import { TabContext, TabPanel } from '@mui/lab';
 import {
     Button,
@@ -21,12 +26,12 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { GiCrossedSwords } from 'react-icons/gi';
+import { Activity } from './Activity';
 import { Crosstable } from './Crosstable';
 import { Games } from './Games';
 import { Pairings } from './Pairings';
 import { Players } from './Players';
 import { Stats } from './Stats';
-import { Activity } from './Activity';
 import SubmitGameModal from './SubmitGameModal';
 import { WithdrawModal } from './WithdrawModal';
 
@@ -52,7 +57,7 @@ export function Tournament({
             <CardContent>
                 {user &&
                     tournament.players[user.username]?.status ===
-                    RoundRobinPlayerStatuses.ACTIVE && (
+                        RoundRobinPlayerStatuses.ACTIVE && (
                         <Stack sx={{ mt: -2, mb: 3 }} gap={2}>
                             <Stack direction='row' gap={1}>
                                 <Button

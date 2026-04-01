@@ -1,8 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
 import {
     RoundRobin,
     RoundRobinPlayerStatuses,
 } from '@jackstenglein/chess-dojo-common/src/roundRobin/api';
+import { cleanup, render, screen } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Activity, getActivitySummary } from './Activity';
@@ -162,7 +162,7 @@ describe('Activity', () => {
         expect(screen.getAllByText('(Withdrawn)')).toHaveLength(1);
         expect(screen.getByText(/15 days ago/)).toBeInTheDocument();
         expect(
-            screen.getByText(/Tournament may have stalled - No games submitted in 15 days/)
+            screen.getByText(/Tournament may have stalled - No games submitted in 15 days/),
         ).toBeInTheDocument();
     });
 
@@ -184,7 +184,7 @@ describe('Activity', () => {
         render(<Activity tournament={tournament} />);
 
         expect(
-            screen.queryByText(/Tournament may have stalled - No games submitted in/)
+            screen.queryByText(/Tournament may have stalled - No games submitted in/),
         ).not.toBeInTheDocument();
     });
 });

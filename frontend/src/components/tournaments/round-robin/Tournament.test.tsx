@@ -1,8 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import {
     RoundRobin,
     RoundRobinPlayerStatuses,
 } from '@jackstenglein/chess-dojo-common/src/roundRobin/api';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Tournament } from './Tournament';
@@ -27,7 +27,7 @@ vi.mock('@/components/navigation/Link', async () => {
                 <a ref={ref} href={href} {...rest}>
                     {children}
                 </a>
-            )
+            ),
         ),
     };
 });
@@ -107,9 +107,7 @@ describe('Tournament', () => {
     afterEach(cleanup);
 
     it('switches to the Activity tab and renders the Activity panel', () => {
-        render(
-            <Tournament tournament={createTournament()} onUpdateTournaments={vi.fn()} />
-        );
+        render(<Tournament tournament={createTournament()} onUpdateTournaments={vi.fn()} />);
 
         expect(screen.getByText('Crosstable Panel')).toBeVisible();
         expect(screen.queryByText('Activity Panel')).not.toBeInTheDocument();

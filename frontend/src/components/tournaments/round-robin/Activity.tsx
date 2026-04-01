@@ -78,7 +78,7 @@ export interface ActivitySummary {
  */
 export function getActivitySummary(
     tournament: RoundRobin,
-    now: Date = new Date()
+    now: Date = new Date(),
 ): ActivitySummary {
     const activities = getActivities(tournament);
     const mostRecentDate = activities.find((a) => a.date)?.date ?? null;
@@ -88,12 +88,11 @@ export function getActivitySummary(
 
     const totalPairings = tournament.pairings.reduce(
         (sum: number, round: RoundRobinPairing[]) => sum + round.length,
-        0
+        0,
     );
     const completedGames = activities.length;
-    const completionRate = totalPairings > 0
-        ? Math.round((completedGames / totalPairings) * 100)
-        : 0;
+    const completionRate =
+        totalPairings > 0 ? Math.round((completedGames / totalPairings) * 100) : 0;
 
     return {
         activities,
@@ -155,8 +154,8 @@ export function Activity({ tournament }: { tournament: RoundRobin }) {
                             {daysSinceLastGame === 0
                                 ? 'Today'
                                 : daysSinceLastGame === 1
-                                    ? '1 day ago'
-                                    : `${daysSinceLastGame} days ago`}
+                                  ? '1 day ago'
+                                  : `${daysSinceLastGame} days ago`}
                         </Typography>
                         <Typography variant='body2' color='text.secondary'>
                             {mostRecentDate.toLocaleDateString()}
@@ -190,13 +189,12 @@ export function Activity({ tournament }: { tournament: RoundRobin }) {
                         {activities.map((activity, index) => {
                             const prevDateStr = activities[index - 1]?.date?.toDateString() ?? null;
                             const curDateStr = activity.date?.toDateString() ?? null;
-                            const showDateHeader =
-                                index === 0 || prevDateStr !== curDateStr;
+                            const showDateHeader = index === 0 || prevDateStr !== curDateStr;
 
                             const isWithinWeek = activity.date
                                 ? (now.getTime() - activity.date.getTime()) /
-                                (1000 * 60 * 60 * 24) <=
-                                7
+                                      (1000 * 60 * 60 * 24) <=
+                                  7
                                 : false;
 
                             return (
@@ -209,9 +207,7 @@ export function Activity({ tournament }: { tournament: RoundRobin }) {
                                         activity.submittedAt || 'no-date',
                                     ].join('-')}
                                     sx={{
-                                        backgroundColor: isWithinWeek
-                                            ? 'action.hover'
-                                            : 'inherit',
+                                        backgroundColor: isWithinWeek ? 'action.hover' : 'inherit',
                                     }}
                                 >
                                     <TableCell>
@@ -244,14 +240,14 @@ export function Activity({ tournament }: { tournament: RoundRobin }) {
                                         </Link>
                                         {tournament.players[activity.white].status ===
                                             RoundRobinPlayerStatuses.WITHDRAWN && (
-                                                <Typography
-                                                    variant='caption'
-                                                    color='text.secondary'
-                                                    sx={{ ml: 1 }}
-                                                >
-                                                    (Withdrawn)
-                                                </Typography>
-                                            )}
+                                            <Typography
+                                                variant='caption'
+                                                color='text.secondary'
+                                                sx={{ ml: 1 }}
+                                            >
+                                                (Withdrawn)
+                                            </Typography>
+                                        )}
                                     </TableCell>
                                     <TableCell>
                                         <Link href={`/profile/${activity.black}`}>
@@ -259,14 +255,14 @@ export function Activity({ tournament }: { tournament: RoundRobin }) {
                                         </Link>
                                         {tournament.players[activity.black].status ===
                                             RoundRobinPlayerStatuses.WITHDRAWN && (
-                                                <Typography
-                                                    variant='caption'
-                                                    color='text.secondary'
-                                                    sx={{ ml: 1 }}
-                                                >
-                                                    (Withdrawn)
-                                                </Typography>
-                                            )}
+                                            <Typography
+                                                variant='caption'
+                                                color='text.secondary'
+                                                sx={{ ml: 1 }}
+                                            >
+                                                (Withdrawn)
+                                            </Typography>
+                                        )}
                                     </TableCell>
                                     <TableCell align='center'>
                                         <Link href={activity.url}>{activity.result}</Link>
@@ -288,8 +284,8 @@ export function Activity({ tournament }: { tournament: RoundRobin }) {
                     }}
                 >
                     <Typography variant='body2' fontWeight='bold'>
-                        ⚠️ Tournament may have stalled - No games submitted in{' '}
-                        {daysSinceLastGame} days
+                        ⚠️ Tournament may have stalled - No games submitted in {daysSinceLastGame}{' '}
+                        days
                     </Typography>
                 </Box>
             )}
