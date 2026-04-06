@@ -1,7 +1,6 @@
 import { Link } from '@/components/navigation/Link';
 import {
     RoundRobin,
-    RoundRobinPairing,
     RoundRobinPlayerStatuses,
 } from '@jackstenglein/chess-dojo-common/src/roundRobin/api';
 import { CalendarMonth } from '@mui/icons-material';
@@ -17,6 +16,7 @@ import {
     TableRow,
     Typography,
 } from '@mui/material';
+import { countTotalGames } from './Stats';
 
 export interface GameActivity {
     white: string;
@@ -26,6 +26,7 @@ export interface GameActivity {
     round: number;
     submittedAt: string;
     date: Date | null;
+    active: boolean;
 }
 
 /**
@@ -47,6 +48,9 @@ export function getActivities(tournament: RoundRobin): GameActivity[] {
                     round: round + 1,
                     submittedAt: p.submittedAt ?? '',
                     date: p.submittedAt ? new Date(p.submittedAt) : null,
+                    active:
+                        tournament.players[p.white].status !== RoundRobinPlayerStatuses.WITHDRAWN &&
+                        tournament.players[p.black].status !== RoundRobinPlayerStatuses.WITHDRAWN,
                 });
             }
         }
@@ -86,11 +90,8 @@ export function getActivitySummary(
         ? Math.floor((now.getTime() - mostRecentDate.getTime()) / (1000 * 60 * 60 * 24))
         : null;
 
-    const totalPairings = tournament.pairings.reduce(
-        (sum: number, round: RoundRobinPairing[]) => sum + round.length,
-        0,
-    );
-    const completedGames = activities.length;
+    const totalPairings = countTotalGames(tournament);
+    const completedGames = activities.filter((a) => a.active).length;
     const completionRate =
         totalPairings > 0 ? Math.round((completedGames / totalPairings) * 100) : 0;
 
