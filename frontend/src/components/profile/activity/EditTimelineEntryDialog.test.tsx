@@ -78,6 +78,7 @@ function makeOrphanedCustomEntry(overrides: Partial<TimelineEntry> = {}): Timeli
         notes: '',
         comments: null,
         reactions: null,
+        ...overrides,
     } as TimelineEntry;
 }
 
