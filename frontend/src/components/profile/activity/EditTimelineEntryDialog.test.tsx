@@ -10,8 +10,10 @@ import { EditTimelinEntryDialog } from './EditTimelineEntryDialog';
 vi.mock('@/api/Api', () => ({ useApi: vi.fn() }));
 vi.mock('@/api/cache/requirements', () => ({ useRequirement: vi.fn() }));
 vi.mock('@/auth/Auth', () => ({ useAuth: vi.fn() }));
-vi.mock('../trainingPlan/ProgressHistory', () => ({
+vi.mock('../trainingPlan/ProgressHistoryItem', () => ({
     ProgressHistoryItem: () => null,
+}));
+vi.mock('../trainingPlan/ProgressHistory', () => ({
     useProgressHistoryEditor: () => ({
         errors: {},
         request: {
@@ -32,8 +34,10 @@ vi.mock('../trainingPlan/ProgressHistory', () => ({
         cohortTime: 0,
         totalCount: 0,
         totalTime: 0,
-        getUpdateItem: () => vi.fn(),
-        getDeleteItem: () => vi.fn(),
+        updateItem: vi.fn(),
+        updateDraftItem: vi.fn(),
+        getDraftItem: () => undefined,
+        deleteItem: vi.fn(),
         onSubmit: vi.fn(),
     }),
 }));
