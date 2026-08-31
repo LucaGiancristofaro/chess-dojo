@@ -121,7 +121,7 @@ describe('EditTimelinEntryDialog (orphaned custom task)', () => {
         );
 
         expect(screen.getByText('Delete activity entry?')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: 'Delete entry' })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: 'Delete' })).toBeInTheDocument();
     });
 
     it('calls updateUserTimeline with the entry marked for deletion and notifies the parent on confirm', async () => {
@@ -135,7 +135,7 @@ describe('EditTimelinEntryDialog (orphaned custom task)', () => {
             />,
         );
 
-        fireEvent.click(screen.getByRole('button', { name: 'Delete entry' }));
+        fireEvent.click(screen.getByRole('button', { name: 'Delete' }));
 
         await waitFor(() => {
             expect(updateUserTimeline).toHaveBeenCalledWith(

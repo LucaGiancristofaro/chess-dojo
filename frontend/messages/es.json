@@ -401,7 +401,7 @@
             "restDayCleared": "Día de descanso eliminado",
             "deletedTaskTitle": "¿Eliminar entrada de actividad?",
             "deletedTaskDescription": "Esta entrada hace referencia a una tarea personalizada que ha sido eliminada. ¿Quieres eliminarla de tu cronología de actividad?",
-            "deleteEntry": "Eliminar entrada",
+            "deleteEntry": "Eliminar",
             "entryDeleted": "Entrada de actividad eliminada"
         },
         "info": {

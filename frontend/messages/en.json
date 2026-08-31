@@ -401,7 +401,7 @@
             "restDayCleared": "Rest day cleared",
             "deletedTaskTitle": "Delete activity entry?",
             "deletedTaskDescription": "This entry references a custom task that has been deleted. Would you like to remove it from your activity timeline?",
-            "deleteEntry": "Delete entry",
+            "deleteEntry": "Delete",
             "entryDeleted": "Activity entry deleted"
         },
         "info": {

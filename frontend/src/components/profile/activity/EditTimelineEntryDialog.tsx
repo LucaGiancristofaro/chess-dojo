@@ -152,7 +152,11 @@ export function EditTimelinEntryDialog({
                     <Button disabled={deleteRequest.isLoading()} onClick={onClose}>
                         {t('cancel')}
                     </Button>
-                    <Button loading={deleteRequest.isLoading()} onClick={onDeleteOrphanedEntry}>
+                    <Button
+                        color='error'
+                        loading={deleteRequest.isLoading()}
+                        onClick={onDeleteOrphanedEntry}
+                    >
                         {t('deleteEntry')}
                     </Button>
                 </DialogActions>

@@ -401,7 +401,7 @@
             "restDayCleared": "Dia de descanso removido",
             "deletedTaskTitle": "Excluir entrada de atividade?",
             "deletedTaskDescription": "Esta entrada faz referência a uma tarefa personalizada que foi excluída. Deseja removê-la da sua linha do tempo de atividade?",
-            "deleteEntry": "Excluir entrada",
+            "deleteEntry": "Excluir",
             "entryDeleted": "Entrada de atividade excluída"
         },
         "info": {

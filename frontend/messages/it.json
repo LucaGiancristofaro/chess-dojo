@@ -401,7 +401,7 @@
             "restDayCleared": "Giorno di riposo annullato",
             "deletedTaskTitle": "Eliminare la voce di attività?",
             "deletedTaskDescription": "Questa voce fa riferimento a un compito personalizzato che è stato eliminato. Vuoi rimuoverla dalla cronologia delle tue attività?",
-            "deleteEntry": "Elimina voce",
+            "deleteEntry": "Elimina",
             "entryDeleted": "Voce di attività eliminata"
         },
         "info": {

@@ -401,7 +401,7 @@
             "restDayCleared": "Ruhetag gelöscht",
             "deletedTaskTitle": "Aktivitätseintrag löschen?",
             "deletedTaskDescription": "Dieser Eintrag bezieht sich auf eine gelöschte benutzerdefinierte Aufgabe. Möchtest du ihn aus deinem Aktivitätszeitstrahl entfernen?",
-            "deleteEntry": "Eintrag löschen",
+            "deleteEntry": "Löschen",
             "entryDeleted": "Aktivitätseintrag gelöscht"
         },
         "info": {
