@@ -6,7 +6,7 @@ const axiosGetMock = vi.hoisted(() => vi.fn());
 
 vi.mock('axios', async (importOriginal) => {
     const actual = await importOriginal<typeof import('axios')>();
-    return { ...actual, default: { ...actual.default, get: axiosGetMock } };
+    return { ...actual, default: { ...actual, get: axiosGetMock } };
 });
 
 function redirectError(location: string) {

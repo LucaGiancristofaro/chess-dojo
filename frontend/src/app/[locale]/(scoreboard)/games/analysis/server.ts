@@ -58,7 +58,7 @@ interface ChesscomEventResponse {
  * @param url The URL of the Lichess game.
  * @returns The PGN of the Lichess game.
  */
-export function getLichessGame(url?: string) {
+export async function getLichessGame(url?: string) {
     return lichessFetcher.getLichessGame(url);
 }
 
@@ -67,7 +67,7 @@ export function getLichessGame(url?: string) {
  * @param url The URL of the Lichess study chapter.
  * @returns The PGN of the chapter.
  */
-export function getLichessChapter(url?: string) {
+export async function getLichessChapter(url?: string) {
     return lichessFetcher.getLichessChapter(url);
 }
 
@@ -76,7 +76,7 @@ export function getLichessChapter(url?: string) {
  * @param url The URL of the Lichess study.
  * @returns A list of the PGNs in the study.
  */
-export function getLichessStudy(url?: string): Promise<PgnImportResult<string[]>> {
+export async function getLichessStudy(url?: string): Promise<PgnImportResult<string[]>> {
     return lichessFetcher.getLichessStudy(url);
 }
 

@@ -6,7 +6,7 @@ const secretsSendMock = vi.hoisted(() => vi.fn());
 
 vi.mock('axios', async (importOriginal) => {
     const actual = await importOriginal<typeof import('axios')>();
-    return { ...actual, default: { ...actual.default, get: axiosGetMock } };
+    return { ...actual, default: { ...actual, get: axiosGetMock } };
 });
 
 vi.mock('@aws-sdk/client-secrets-manager', () => ({
@@ -24,7 +24,7 @@ vi.mock('@aws-sdk/client-secrets-manager', () => ({
 /** Imports a fresh copy of the module, so the cached Lichess token is reset. */
 async function importLichess() {
     vi.resetModules();
-    return import('./lichess');
+    return import('./lichess.js');
 }
 
 function redirectError(location: string) {
