@@ -25,6 +25,12 @@ function redirectError(location: string) {
     );
 }
 
+/** Imports a fresh copy of the module, so the cached Lichess token is reset. */
+async function importServer() {
+    vi.resetModules();
+    return import('./server');
+}
+
 beforeEach(() => {
     axiosGetMock.mockReset();
     vi.stubEnv('LICHESS_API_TOKEN', '');
@@ -38,6 +44,7 @@ describe('getLichessGame', () => {
     it('sends the Lichess API token and does not follow redirects', async () => {
         vi.stubEnv('LICHESS_API_TOKEN', 'lip_token');
         axiosGetMock.mockResolvedValue({ data: '[Event "Test"]' });
+        const { getLichessGame } = await importServer();
 
         await expect(getLichessGame('https://lichess.org/abcdefghWXYZ')).resolves.toEqual({
             data: '[Event "Test"]',
